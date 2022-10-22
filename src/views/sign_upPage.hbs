@@ -1,0 +1,94 @@
+
+
+<div class='container mt-4 form'>
+    <h2>Đăng ký</h2>
+    <form method='post' class='mt-4 form-sign-up'>
+        <div class='form-group'>
+            <label for='account-signup'>Tài khoản</label>
+            <input
+                id='account-signup'
+                type='text'
+                class='form-control'
+                placeholder='Enter account'
+                autocomplete='off'
+                name='account'
+                required
+            />
+        </div>
+        <div class='form-group'>
+            <label for='email'>Email</label>
+            <input
+                type='email'
+                class='form-control'
+                id='email-signup'
+                aria-describedby='emailHelp'
+                placeholder='Enter email'
+                name='email'
+                required
+            />
+        </div>
+        <div class='form-group'>
+            <label for='password'>Mật khẩu</label>
+            <input
+                type='password'
+                name='password'
+                class='form-control'
+                id='password-signup'
+                placeholder='Password'
+                required
+            />
+        </div>
+        <div class='form-group'>
+            <label for='confirm-password'>Xác nhận mật khẩu</label>
+            <input
+                type='password'
+                class='form-control'
+                id='confirm-password-signup'
+                placeholder='Confirm Password'
+                name='confirm-password'
+                required
+            />
+        </div>
+        <div class='form-group'>
+            <label for='age-signup'>Tuổi</label>
+            <input
+                id='age-signup'
+                type='number'
+                class='form-control'
+                placeholder='Enter your age'
+                autocomplete='off'
+                name='age'
+            />
+        </div>
+        <div class='form-group'>
+            <label for='address-signup'>Địa chỉ</label>
+            <input
+                id='address-signup'
+                type='text'
+                class='form-control'
+                placeholder='Enter address'
+                autocomplete='off'
+                name='address'
+            />
+        </div>
+        <button type='submit' class='btn btn-primary'>Đăng ký</button>
+    </form>
+</div>
+
+<script>
+    const $ = document.querySelector.bind(document); 
+    const $$ = document.querySelectorAll.bind(document); 
+    const form = $('.form-sign-up');
+    form.addEventListener('submit',e  => {
+        e.preventDefault();
+        const pwInput = $('#password-signup');
+        const confirmPwInput = $('#confirm-password-signup');
+        if(confirmPwInput.value !== pwInput.value){
+            alert('Mat khau ko trung khop')
+        } else {
+            form.action = '/sign-up';
+            form.submit();
+        }
+
+    })
+</script>

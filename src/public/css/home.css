@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.account-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-btn button {
+    margin-left: 10px;
+}
+
+.user-account {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    user-select: none;
+}
+
+

@@ -1,0 +1,37 @@
+.wrapper-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper-input + .wrapper-input {
+    margin-left: 50px;
+}
+
+.label-input {
+    min-width: 70px;
+    /* text-align: center; */
+}
+
+.input {
+    border-radius: 5px;
+    padding: 6px 12px;
+    width: 250px;
+}
+
+.book-description {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.book-description textarea {
+    width: 800px;
+    height: 200px;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+.book-type {
+    width: 150px;
+}

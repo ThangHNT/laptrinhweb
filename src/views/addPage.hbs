@@ -1,0 +1,48 @@
+<div class="wrapper-add-book container">
+    <h2 class="mt-5">Thêm sách mới</h2>
+    <div class="content-add mt-4">
+        <div class="column">
+            <div class="row">
+                <div class="wrapper-input">
+                    <label class="label-input">Tiêu đề</label>
+                    <input class="input" name="title" />
+                </div>
+                <div class="wrapper-input">
+                    <label class="label-input">Tác giả</label>
+                    <input class="input" name="author" />
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="book-description">
+                    <label>Mô tả</label>
+                    <textarea></textarea>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="wrapper-input">
+                    <label class="label-input">Ngày phát hành</label>
+                    <input class="input" name="approved" />
+                </div>
+                <div class="wrapper-input">
+                    <label class="label-input">Số trang</label>
+                    <input type="number" class="input" name="numberOfPage" />
+                </div>
+            </div>
+            <div class="row mt-4">
+                <select name="type" id="book-type" class="book-type">
+                    <option value="Thể loại">Thể loại</option>
+                    <option value="Khoa học">Khoa học</option>
+                    <option value="lịch sử">lịch sử</option>
+                    <option value="Văn học">Văn học</option>
+                    <option value="Địa lý">Địa lý</option>
+                    <option value="Tình cảm">Tình cảm</option>
+                    <option value="Giải trí">Giải trí</option>
+                    <option value="Tài liệu">Tài liệu</option>
+                    <option value="Tâm lý học">Tâm lý học</option>
+                    {{!-- <option value="Địa">Địa</option> --}}
+                </select>
+            </div>
+        </div>
+        <div class="column"></div>
+    </div>
+</div>
