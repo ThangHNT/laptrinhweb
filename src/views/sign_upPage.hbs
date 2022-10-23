@@ -79,16 +79,39 @@
     const $ = document.querySelector.bind(document); 
     const $$ = document.querySelectorAll.bind(document); 
     const form = $('.form-sign-up');
-    form.addEventListener('submit',e  => {
+    form.addEventListener('submit', async(e) => {
         e.preventDefault();
         const pwInput = $('#password-signup');
         const confirmPwInput = $('#confirm-password-signup');
         if(confirmPwInput.value !== pwInput.value){
             alert('Mat khau ko trung khop')
         } else {
-            form.action = '/sign-up';
-            form.submit();
+            let account = $('#account-signup');
+            let email = $('#email-signup');
+            let checkaccount = await checkAccount('/user/check/account',{account:account.value, email:email.value});
+            if(checkaccount.result){
+                alert('Đăng ký thành công');
+                setTimeout(() => {
+                    form.action = '/sign-up';
+                    form.submit();
+                },2000);
+            } else {
+                alert(checkaccount.msg);
+            }
         }
 
     })
+
+    async function checkAccount(url, data) {
+        var option = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+        let data2 = await fetch(url,option);
+        let result = await data2.json();
+        return result;
+    }
 </script>

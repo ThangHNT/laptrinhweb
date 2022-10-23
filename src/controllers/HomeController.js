@@ -28,8 +28,8 @@ class HomeController {
         user.email = email;
         user.age = age;
         user.address = address;
-        user.save();
-        res.render('home_logined',{account,age,address});
+        // user.save();
+        res.redirect('/user/login');
     }
 }
 
