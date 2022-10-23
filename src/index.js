@@ -2,6 +2,7 @@ const express = require('express');
 const handlebars = require('express-handlebars');
 const path = require('path');
 const app = express();
+const upload = require('express-fileupload');
 const port = 3500;
 const route = require('./routes/main');
 
@@ -11,6 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+app.use(upload());
 
 // connect to db
 const mongoose = require('mongoose');

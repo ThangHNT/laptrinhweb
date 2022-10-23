@@ -47,8 +47,9 @@
 }
 
 .default-img {
-    width: 240px;
+    max-width: 400px;
     height: auto;
+    object-fit: cover;
 }
 
 .select-cover-image-btn {

@@ -1,59 +1,94 @@
-<div class="wrapper-add-book container">
-    <h2 class="mt-5">Thêm sách mới</h2>
-    <div class="content-add mt-4">
-        <div class="column">
-            <div class="row">
-                <div class="wrapper-input">
-                    <label class="label-input">Tiêu đề</label>
-                    <input class="input" name="title" />
+<form method="post" class="form-add-book" enctype="multipart/form-data">
+    <div class="wrapper-add-book container">
+        <h2 class="mt-5">Thêm sách mới</h2>
+        <div class="content-add mt-4">
+            <div class="column">
+                <div class="row">
+                    <div class="wrapper-input">
+                        <label class="label-input">Tiêu đề</label>
+                        <input class="input-title input" name="title" required />
+                    </div>
+                    <div class="wrapper-input">
+                        <label class="label-input">Tác giả</label>
+                        <input class="input-author input" name="author" required />
+                    </div>
                 </div>
-                <div class="wrapper-input">
-                    <label class="label-input">Tác giả</label>
-                    <input class="input" name="author" />
+                <div class="row mt-4">
+                    <div class="book-description">
+                        <label>Mô tả</label>
+                        <textarea class="input-description input" name="description" required></textarea>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="wrapper-input">
+                        <label class="label-input">Ngày phát hành</label>
+                        <input type="date" class="input-release-date input" name="releaseDate" required />
+                    </div>
+                    <div class="wrapper-input">
+                        <label class="label-input">Số trang</label>
+                        <input type="number" class="input input-number-page" name="numberOfPage" required />
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <select name="category" id="form-add-book" class="book-category" required>
+                        <option value="">Thể loại</option>
+                        <option value="Khoa học">Khoa học</option>
+                        <option value="lịch sử">lịch sử</option>
+                        <option value="Văn học">Văn học</option>
+                        <option value="Địa lý">Địa lý</option>
+                        <option value="Tình cảm">Tiểu thuyết</option>
+                        <option value="Giải trí">Giải trí</option>
+                        <option value="Tài liệu">Tài liệu</option>
+                        <option value="Tâm lý học">Tâm lý học</option>
+                        {{!-- <option value="Địa">Địa</option> --}}
+                    </select>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="book-description">
-                    <label>Mô tả</label>
-                    <textarea name="description"></textarea>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="wrapper-input">
-                    <label class="label-input">Ngày phát hành</label>
-                    <input class="input" name="releaseDate" />
-                </div>
-                <div class="wrapper-input">
-                    <label class="label-input">Số trang</label>
-                    <input type="number" class="input" name="numberOfPage" />
-                </div>
-            </div>
-            <div class="row mt-4">
-                <select name="category" id="book-category" class="book-category">
-                    <option value="Thể loại">Thể loại</option>
-                    <option value="Khoa học">Khoa học</option>
-                    <option value="lịch sử">lịch sử</option>
-                    <option value="Văn học">Văn học</option>
-                    <option value="Địa lý">Địa lý</option>
-                    <option value="Tình cảm">Tình cảm</option>
-                    <option value="Giải trí">Giải trí</option>
-                    <option value="Tài liệu">Tài liệu</option>
-                    <option value="Tâm lý học">Tâm lý học</option>
-                    {{!-- <option value="Địa">Địa</option> --}}
-                </select>
-            </div>
-        </div>
-        <div class="column">
-            <div class="cover-image">
-                <img class="default-img" src="https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg" alt="cover image">
-                <div class="select-cover-image-btn mt-4">
-                    <span>Chọn ảnh</span>
-                    <input type="file" class="select-cover-image-input">
+            <div class="column">
+                <div class="cover-image">
+                    <img class="default-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7n9ShRlFcmM9X22DSHtblI35-XXJb7ekYgyO-y6t5Aw&s" alt="cover image">
+                    <div class="select-cover-image-btn mt-4">
+                        <span>Chọn ảnh</span>
+                        <input type="file" name="coverImage" class="select-cover-image-input" accept="image/*" >
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="footer container mt-4">
-    <button type="button" class="btn btn-primary add-book-btn">Add</button>
-</div>
+    <div class="footer container mt-4">
+        <button type="submit" class="btn btn-primary add-book-btn">Add</button>
+    </div>
+
+</form>
+
+<script>
+    const $ = document.querySelector.bind(document);
+    const $$ = document.querySelectorAll.bind(document);
+    const form = $('.form-add-book');
+    let selectImageInput = $('.select-cover-image-input');
+    let coverImage = $('.default-img');
+    selectImageInput.addEventListener('change', (e) => {
+        let target = e.target;
+        let reader = new FileReader();
+        reader.readAsDataURL(target.files[0]);
+        reader.onload = function(){
+            let dataUrl = reader.result;
+            coverImage.src = dataUrl;
+        }
+    })
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let inputs = $$('.input');
+        let checkInput = true;
+        inputs.forEach(item => {
+            if(item.value.length < 2){
+                alert('Độ dài tối thiểu 2 ký tự');
+                checkInput = false;
+            }
+        })
+        if(checkInput) {
+            form.action = '/book/new-book';
+            form.submit();
+        }
+    })
+</script>

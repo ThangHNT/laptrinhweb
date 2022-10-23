@@ -6,24 +6,12 @@ class BookController {
         res.render('addPage');
     }
 
-    editBookView(req, res, next) {
-        res.render('editBook');
-    }
-
-    createNewBookView(req, res, next) {
-        res.render('newBook');
-    }
-
-    createBook(req, res) {
-        // console.log(req.body);
-        const { bookcode, title, author, category, approved } = req.body;
-        const book = new Book();
-        book.bookcode = bookcode;
-        book.title = title;
-        book.author = author;
-        book.category = category;
-        book.approved = approved;
-        book.save();
+    newBook(req, res) {
+        console.log(req.body);
+        if(req.files){
+            const dataBase64 = req.files.coverImage.data.toString("base64");
+            // console.log(dataBase64);
+        }
         return res.send('oke');
     }
 }
