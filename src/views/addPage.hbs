@@ -15,13 +15,13 @@
             <div class="row mt-4">
                 <div class="book-description">
                     <label>Mô tả</label>
-                    <textarea></textarea>
+                    <textarea name="description"></textarea>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="wrapper-input">
                     <label class="label-input">Ngày phát hành</label>
-                    <input class="input" name="approved" />
+                    <input class="input" name="releaseDate" />
                 </div>
                 <div class="wrapper-input">
                     <label class="label-input">Số trang</label>
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="row mt-4">
-                <select name="type" id="book-type" class="book-type">
+                <select name="category" id="book-category" class="book-category">
                     <option value="Thể loại">Thể loại</option>
                     <option value="Khoa học">Khoa học</option>
                     <option value="lịch sử">lịch sử</option>
@@ -43,6 +43,17 @@
                 </select>
             </div>
         </div>
-        <div class="column"></div>
+        <div class="column">
+            <div class="cover-image">
+                <img class="default-img" src="https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg" alt="cover image">
+                <div class="select-cover-image-btn mt-4">
+                    <span>Chọn ảnh</span>
+                    <input type="file" class="select-cover-image-input">
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+<div class="footer container mt-4">
+    <button type="button" class="btn btn-primary add-book-btn">Add</button>
 </div>

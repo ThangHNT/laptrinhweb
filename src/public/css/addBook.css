@@ -1,3 +1,10 @@
+
+.content-add {
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+}
+
 .wrapper-input {
     display: flex;
     align-items: center;
@@ -16,7 +23,6 @@
 .input {
     border-radius: 5px;
     padding: 6px 12px;
-    width: 250px;
 }
 
 .book-description {
@@ -26,12 +32,53 @@
 }
 
 .book-description textarea {
-    width: 800px;
+    width: 600px;
     height: 200px;
     padding: 6px 12px;
     border-radius: 5px;
 }
 
-.book-type {
+.book-category {
     width: 150px;
 }
+
+.cover-image {
+    margin-left: 50px;
+}
+
+.default-img {
+    width: 240px;
+    height: auto;
+}
+
+.select-cover-image-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    width: 100%;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.select-cover-image-btn:hover {
+    background-color: #0069d9;
+}
+
+.select-cover-image-input {
+    position: absolute;
+    left: -50px;
+    bottom: 5px;
+    cursor: pointer;
+    transform: scale(1.5);
+    opacity: 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
