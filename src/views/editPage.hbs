@@ -1,70 +1,77 @@
-<form method="POST" action="/book/edit/?id={{book._id}}" class="form-add-book" enctype="multipart/form-data">
-    <div class="wrapper-add-book container">
-        <h2 class="mt-5">Chỉnh sửa thông tin sách</h2>
-        <div class="content-add mt-4">
-            <div class="column">
-                <div class="row">
-                    <div class="wrapper-input">
-                        <label class="label-input">Tiêu đề</label>
-                        <input disabled class="input-title input" name="title" value="{{book.title}}" disabled/>
+<div class="wrapper-edit">
+    <header class='container header-login'>
+        <a href="/home">
+            <img class='logo' src="https://media.istockphoto.com/vectors/book-logo-template-vector-id1256528848?b=1&k=20&m=1256528848&s=612x612&w=0&h=T9559DTJrWCW2aVrIpQgcxl515QitubN_Bikya3w27k=" alt="logo">
+        </a>
+        <h2 class="header-title">Chỉnh sửa thông tin sách</h2>
+    </header>
+    <form method="POST" action="/book/edit/?id={{book._id}}" class="form-add-book" enctype="multipart/form-data">
+        <div class="wrapper-add-book container">
+            <div class="content-add mt-4">
+                <div class="column">
+                    <div class="row">
+                        <div class="wrapper-input">
+                            <label class="label-input">Tiêu đề</label>
+                            <input disabled class="input-title input" name="title" value="{{book.title}}" disabled/>
+                        </div>
+                        <div class="wrapper-input">
+                            <label class="label-input">Tác giả</label>
+                            <input disabled class="input-author input" name="author" value="{{book.author}}" />
+                        </div>
                     </div>
-                    <div class="wrapper-input">
-                        <label class="label-input">Tác giả</label>
-                        <input disabled class="input-author input" name="author" value="{{book.author}}" />
+                    <div class="row mt-4">
+                        <div class="book-description">
+                            <label>Mô tả</label>
+                            <textarea class="input-description input" name="description" >{{book.description}}</textarea>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="wrapper-input">
+                            <label class="label-input">Ngày phát hành</label>
+                            <input disabled type="date" class="input-release-date input" name="releaseDate" value="{{book.releaseDate}}"  />
+                        </div>
+                        <div class="wrapper-input">
+                            <label class="label-input">Số trang</label>
+                            <input disabled type="number" class="input input-number-page" name="numberOfPage" value="{{book.numberOfPage}}" />
+                        </div>
+                    </div>
+                    {{!-- <div class="row mt-4">
+                        <label for="book-category">Thể loại:</label>
+                        <span id="book-category"> {{book.category}}</span>
+                    </div> --}}
+                    <div class="row mt-2">
+                        <select name="category" id="form-add-book" data="{{book.category}}" class="book-category" disabled>
+                            <option value="">Thể loại</option>
+                            <option value="Khoa học">Khoa học</option>
+                            <option value="lịch sử">lịch sử</option>
+                            <option value="Văn học">Văn học</option>
+                            <option value="Địa lý">Địa lý</option>
+                            <option value="Tiểu thuyết">Tiểu thuyết</option>
+                            <option value="Giải trí">Giải trí</option>
+                            <option value="Tài liệu">Tài liệu</option>
+                            <option value="Tâm lý học">Tâm lý học</option>
+                        </select>
                     </div>
                 </div>
-                <div class="row mt-4">
-                    <div class="book-description">
-                        <label>Mô tả</label>
-                        <textarea class="input-description input" name="description" >{{book.description}}</textarea>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="wrapper-input">
-                        <label class="label-input">Ngày phát hành</label>
-                        <input disabled type="date" class="input-release-date input" name="releaseDate" value="{{book.releaseDate}}"  />
-                    </div>
-                    <div class="wrapper-input">
-                        <label class="label-input">Số trang</label>
-                        <input disabled type="number" class="input input-number-page" name="numberOfPage" value="{{book.numberOfPage}}" />
-                    </div>
-                </div>
-                {{!-- <div class="row mt-4">
-                    <label for="book-category">Thể loại:</label>
-                    <span id="book-category"> {{book.category}}</span>
-                </div> --}}
-                <div class="row mt-2">
-                    <select name="category" id="form-add-book" data="{{book.category}}" class="book-category" disabled>
-                        <option value="">Thể loại</option>
-                        <option value="Khoa học">Khoa học</option>
-                        <option value="lịch sử">lịch sử</option>
-                        <option value="Văn học">Văn học</option>
-                        <option value="Địa lý">Địa lý</option>
-                        <option value="Tiểu thuyết">Tiểu thuyết</option>
-                        <option value="Giải trí">Giải trí</option>
-                        <option value="Tài liệu">Tài liệu</option>
-                        <option value="Tâm lý học">Tâm lý học</option>
-                        {{!-- <option value="Địa">Địa</option> --}}
-                    </select>
-                </div>
-            </div>
-            <div class="column">
-                <div class="cover-image">
-                    <img class="default-img" src="{{book.coverImage}}" alt="cover image">
-                    <div class="select-cover-image-btn mt-4">
-                        <span>Chọn ảnh</span>
-                        <input disabled type="file" name="coverImage" class="select-cover-image-input input" accept="image/*" >
+                <div class="column">
+                    <div class="cover-image">
+                        <img class="default-img" src="{{book.coverImage}}" alt="cover image">
+                        <div class="select-cover-image-btn mt-4">
+                            <span>Chọn ảnh</span>
+                            <input disabled type="file" name="coverImage" class="select-cover-image-input input" accept="image/*" >
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="footer container mt-4">
-        <button type="button" class="btn btn-primary edit-book-btn">Edit</button>
-        <button type="submit" class="btn btn-primary save-book-btn hidden">Save</button>
-    </div>
+        <div class="footer container mt-4">
+            <button type="button" class="btn btn-primary edit-book-btn">Edit</button>
+            <button type="submit" class="btn btn-primary save-book-btn hidden">Save</button>
+        </div>
 
-</form>
+    </form>
+</div>
+
 
 <script>
     const $ = document.querySelector.bind(document);

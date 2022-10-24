@@ -3,8 +3,9 @@ const Book = require('../model/book');
 const {multiComponents} = require('../ulties/converToObject')
 
 class HomeController {
-    home(req,res) {
-        res.render('home');
+    async home(req,res) {
+        const books = await Book.find({});
+        res.render('home',{books: multiComponents(books)});
     }
 
     async homeLogined(req, res) {

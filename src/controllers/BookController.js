@@ -48,6 +48,11 @@ class BookController {
         book.save();
         res.redirect('/home');
     }
+
+    async delete(req,res){
+        await Book.deleteOne({_id:req.query.id});
+        res.redirect('/home');
+    }
 }
 
 module.exports = new BookController();

@@ -1,6 +1,9 @@
 <header class='home'>
     <div class='container mt-4'>
         <div class='wrapper'>
+            <a href="/">
+                <img class='logo' src="https://media.istockphoto.com/vectors/book-logo-template-vector-id1256528848?b=1&k=20&m=1256528848&s=612x612&w=0&h=T9559DTJrWCW2aVrIpQgcxl515QitubN_Bikya3w27k=" alt="logo">
+            </a>
             <h2>Thư viện sách</h2>
             <div class='account-btn'>
                 <a href='/user/logout'>
@@ -23,6 +26,7 @@
                 <th scope='col'>Ngày phát hành</th>
                 <th scope='col'>Số Trang</th>
                 <th scope='col'> </th>
+                <th scope='col'> </th>
             </tr>
         </thead>
         <tbody>
@@ -39,7 +43,7 @@
                     </a>
                 </td>
                 <td>
-                    <a href="#">
+                    <a href="#" book-id="{{this._id}}" class="delete-book-btn">
                         <button type="button" class="btn btn-danger">Xóa</button>
                     </a>
                 </td>
@@ -48,3 +52,46 @@
         </tbody>
     </table>
 </div>
+
+<!-- Modal -->
+<div class="mymodal hidden" >
+    <div class="modal-overlay"></div>
+    <div class="mymodal-content">
+        <div class="mymodal-header">
+            <span>Xóa Sách</span>
+        </div>
+        <div class="mymodal-body">
+            <p>Bạn có chắc muốn xóa cuốn sách này ?</p>
+        </div>
+        <div class="mymodal-footer">
+            <button type="button" class="btn btn-secondary close-modal">Hủy</button>
+            <a href="#" class="confirm-delete-book-btn">
+                <button type="button" class="btn btn-danger">xác nhận</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const $ = document.querySelector.bind(document);
+    const $$ = document.querySelectorAll.bind(document);
+    const deleteBtn = $('.delete-book-btn');
+    const confirmDeleteBtn = $('.confirm-delete-book-btn');
+    const modal = $('.mymodal');
+    const modalContent = $('.mymodal-content');
+    const closeModalBtn = $('.close-modal');
+    if(deleteBtn){
+        deleteBtn.onclick = (e) => {
+            modal.classList.remove('hidden');
+            modalContent.classList.add('display-modal');
+            confirmDeleteBtn.href = `/book/delete?id=${deleteBtn.getAttribute('book-id')}`;
+        }
+    }
+    if(closeModalBtn){
+        closeModalBtn.onclick = (e) => {
+            modal.classList.add('hidden');
+            modalContent.classList.remove('display-modal');
+        }
+
+    }
+</script>

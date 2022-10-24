@@ -35,3 +35,14 @@
 .hidden {
     display: none;
 }
+
+.header-login {
+    display: flex;
+    align-items: center;
+}
+
+.header-title {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}

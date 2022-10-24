@@ -4,6 +4,12 @@
     justify-content: space-between;
 }
 
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
 .account-btn {
     display: flex;
     align-items: center;

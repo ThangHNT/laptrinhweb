@@ -1,4 +1,9 @@
 
+.header-add-book {
+    display: flex;
+    align-items: center;
+}
+
 .content-add {
     display: flex;
     align-items: center;
