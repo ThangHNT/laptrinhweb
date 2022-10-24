@@ -5,6 +5,7 @@ const app = express();
 const upload = require('express-fileupload');
 const port = 3500;
 const route = require('./routes/main');
+const methodOverride = require('method-override');
 
 app.engine('.hbs', handlebars({ extname: '.hbs' }));
 app.set('view engine', '.hbs');
@@ -13,6 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(upload());
+app.use(methodOverride('_method'));
 
 // connect to db
 const mongoose = require('mongoose');

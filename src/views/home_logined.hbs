@@ -3,7 +3,6 @@
         <div class='wrapper'>
             <h2>Thư viện sách</h2>
             <div class='account-btn'>
-                <p class='user-account'>{{account}}</p>
                 <a href='/user/logout'>
                     <button type='button' class='btn btn-secondary'>Đăng xuất</button>
                 </a>
@@ -19,6 +18,7 @@
         <thead>
             <tr>
                 <th scope='col'>Tiêu đề</th>
+                <th scope='col'>Tác giả</th>
                 <th scope='col'>Thể loại</th>
                 <th scope='col'>Ngày phát hành</th>
                 <th scope='col'>Số Trang</th>
@@ -26,12 +26,25 @@
             </tr>
         </thead>
         <tbody>
+            {{#each books}}
             <tr>
-                <td>Chiếc thuyền ngoài xa</td>
-                <td>Truyện ngắn kinh dị</td>
-                <td>21/10/2022</td>
-                <td>1</td>
+                <td>{{this.title}}</td>
+                <td>{{this.author}}</td>
+                <td>{{this.category}}</td>
+                <td>{{this.releaseDate}}</td>
+                <td>{{this.numberOfPage}}</td>
+                <td>
+                    <a href="/book/edit-page?id={{this._id}}">
+                        <button type="button" class="btn btn-primary">Xem</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="#">
+                        <button type="button" class="btn btn-danger">Xóa</button>
+                    </a>
+                </td>
             </tr>
+            {{/each}}
         </tbody>
     </table>
 </div>
